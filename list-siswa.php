@@ -77,6 +77,7 @@
 
     <nav>
         <a href="form-daftar.php">[+] Tambah Baru</a>
+        <a href="laporan.php" class="btn-pdf">Download File PDF</a>
     </nav>
 
     <table>
@@ -85,6 +86,7 @@
             <th>No</th>
             <th>Nama</th>
             <th>Alamat</th>
+            <th>Foto</th>
             <th>Jenis Kelamin</th>
             <th>Agama</th>
             <th>Sekolah Asal</th>
@@ -103,6 +105,7 @@
             echo "<td>".$siswa['id']."</td>";
             echo "<td>".$siswa['nama']."</td>";
             echo "<td>".$siswa['alamat']."</td>";
+            echo "<td><img src='images/".$siswa['foto']."' width='100' height='100'></td>";
             echo "<td>".$siswa['jenis_kelamin']."</td>";
             echo "<td>".$siswa['agama']."</td>";
             echo "<td>".$siswa['sekolah_asal']."</td>";

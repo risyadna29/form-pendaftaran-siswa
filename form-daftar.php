@@ -72,7 +72,7 @@ input[type="submit"]:hover {
         <h3>Formulir Pendaftaran SMK Daydream Key</h3>
     </header>
 
-    <form action="proses-pendaftaran.php" method="POST">
+    <form action="proses-pendaftaran.php" method="POST" enctype="multipart/form-data">
 
         <fieldset>
 
@@ -84,6 +84,10 @@ input[type="submit"]:hover {
             <label for="alamat">Alamat: </label>
             <textarea name="alamat"></textarea>
         </p>
+        <p>
+                <label form="foto">Foto (1:1):</label>
+                <input type="file" name="foto">
+            </p>
         <p>
             <label for="jenis_kelamin">Jenis Kelamin: </label>
             <label><input type="radio" name="jenis_kelamin" value="laki-laki"> Laki-laki</label>

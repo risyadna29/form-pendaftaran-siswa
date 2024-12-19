@@ -12,9 +12,15 @@ if(isset($_POST['daftar'])){
     $agama = $_POST['agama'];
     $sekolah = $_POST['sekolah_asal'];
 
-    // buat query
-    $sql = "INSERT INTO calon_siswa (nama, alamat, jenis_kelamin, agama, sekolah_asal) VALUE ('$nama', '$alamat', '$jk', '$agama', '$sekolah')";
-    $query = mysqli_query($db, $sql);
+    $foto = $_FILES['foto']['name'];
+    $tmp = $_FILES['foto']['tmp_name'];
+
+    $path = "images/".$foto;
+
+    if(move_uploaded_file($tmp, $path)){
+        // buat query
+        $sql = "INSERT INTO calon_siswa (nama, alamat, foto, jenis_kelamin, agama, sekolah_asal) VALUE ('$nama', '$alamat', '$foto', '$jk', '$agama', '$sekolah')";
+        $query = mysqli_query($db, $sql);
 
     // apakah query simpan berhasil?
     if( $query ) {
@@ -29,5 +35,26 @@ if(isset($_POST['daftar'])){
 } else {
     die("Akses dilarang...");
 }
+}
 
+// Ambil data dari form
+$nama = $_POST['nama'];
+$alamat = $_POST['alamat'];
+$jenis_kelamin = $_POST['jenis_kelamin'];
+$email = $_POST['email'];
+$jabatan = $_POST['jabatan'];
+$departemen = $_POST['departemen'];
+$nomor_telepon = $_POST['nomor_telepon'];
+
+// Query untuk menyimpan data ke database
+$sql = "INSERT INTO pegawai (nama, alamat, jenis_kelamin, email, jabatan, departemen, nomor_telepon)
+        VALUES ('$nama', '$alamat', '$jenis_kelamin', '$email', '$jabatan', '$departemen', '$nomor_telepon')";
+
+$query = mysqli_query($db, $sql);
+
+if ($query) {
+    header('Location: list-pegawai.php');
+} else {
+    echo "Gagal menyimpan data.";
+}
 ?>

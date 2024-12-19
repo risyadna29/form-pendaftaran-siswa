@@ -22,19 +22,81 @@ if( mysqli_num_rows($query) < 1 ){
 
 ?>
 
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>Formulir Edit Siswa | SMK Coding</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            background: #9966cb ;
+            color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        form {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        fieldset {
+            border: none;
+        }
+
+        p {
+            margin: 15px 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        input[type="submit"] {
+            background: #35424a;
+            color: #ffffff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background: #45a049;
+        }
+    </style>
 </head>
 
 <body>
     <header>
-        <h3>Formulir Edit Siswa</h3>
+        <h3>Formulir Edit Data Siswa</h3>
     </header>
 
-    <form action="proses-edit.php" method="POST">
+    <form action="proses-edit.php" method="POST" enctype="multipart/form-data">
 
         <fieldset>
 
@@ -46,8 +108,14 @@ if( mysqli_num_rows($query) < 1 ){
         </p>
         <p>
             <label for="alamat">Alamat: </label>
-            <textarea name="alamat"><?php echo $siswa['alamat'] ?></textarea>
+            <textarea name="alamat" placeholder="Alamat"><?php echo $siswa['alamat'] ?></textarea>
         </p>
+        <p>
+                <?php echo "<td><img src='images/".$siswa['foto']."' width='100' height='100'></td>"; ?>
+                <br>
+                <label for="foto">Foto:</label>
+                <input type="file" name="foto">
+            </p>
         <p>
             <label for="jenis_kelamin">Jenis Kelamin: </label>
             <?php $jk = $siswa['jenis_kelamin']; ?>
@@ -66,7 +134,7 @@ if( mysqli_num_rows($query) < 1 ){
             </select>
         </p>
         <p>
-            <label for="sekolah_asal">Sekolah Asal: </label>
+            <label for="sekolah_as al">Sekolah Asal: </label>
             <input type="text" name="sekolah_asal" placeholder="nama sekolah" value="<?php echo $siswa['sekolah_asal'] ?>" />
         </p>
         <p>
@@ -74,9 +142,7 @@ if( mysqli_num_rows($query) < 1 ){
         </p>
 
         </fieldset>
-
-
     </form>
 
-    </body>
-</html>
+</body>
+</html> 
